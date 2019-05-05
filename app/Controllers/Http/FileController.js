@@ -53,7 +53,6 @@ class FileController {
       return file
 
     } catch (err) {
-      console.log(err)
       return response.status(err.status).send({ error: { message: 'Erro no upload de arquivo', err } })
     }
   }
