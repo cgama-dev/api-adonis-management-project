@@ -9,8 +9,14 @@ class UserController {
 
     const user = User.create(data)
 
-    return  user
+    return user
 
+  }
+
+  async query({ request }) {
+    const users = await User.all()
+
+    return users
   }
 }
 

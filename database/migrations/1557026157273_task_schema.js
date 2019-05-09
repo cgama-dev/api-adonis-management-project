@@ -8,11 +8,10 @@ class TaskSchema extends Schema {
     this.create('tasks', (table) => {
       table.increments()
       table
-        .integer('projeto_id')
+        .integer('project_id')
         .unsigned()
-        .notNullable()
         .references('id')
-        .inTable('users')
+        .inTable('projects')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
       table
@@ -21,19 +20,19 @@ class TaskSchema extends Schema {
         .references('id')
         .inTable('users')
         .onUpdate('CASCADE')
-        .onDelete('SET NULL ')
+        .onDelete('SET NULL')
       table
         .integer('file_id')
         .unsigned()
         .references('id')
         .inTable('files')
         .onUpdate('CASCADE')
-        .onDelete('SET NULL ')
+        .onDelete('SET NULL')
       table
-        .string('title')
-        .notNullable()
-      table.text('description')
-      table.timestamps('due_date')
+        .string('title').notNullable()
+      table
+        .text('description')
+      table.timestamp('due_date')
       table.timestamps()
     })
   }
